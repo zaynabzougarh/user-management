@@ -47,11 +47,8 @@ jobs:
 
         # Build and SonarQube analysis
       - name: Build and analyze
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
-          mvn -B verify sonar:sonar -Dsonar.project.settings=./sonar-project.properties
+          mvn -B verify sonar:sonar -Dsonar.project.settings=sonar-project.properties
         shell: cmd
         # Build Docker image
       - name: Build Docker image
@@ -66,6 +63,8 @@ jobs:
       - name: Push Docker image
         run: |
           docker push carikk/quality-gate:latest
+
+#          docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
 
       # Set up kubeconfig from secret
       - name: Set up kubeconfig
