@@ -63,12 +63,11 @@ jobs:
       - name: Log in to DockerHub
         shell: powershell
         run: |
-          echo "Docker2024" | docker login -u "bouzoubaa.ysn@gmail.com" --password-stdin
+          docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
       - name: Push Docker image
         run: |
           docker push carikk/quality-gate:latest
 
-#          docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
 
       # Set up kubeconfig from secret
       - name: Set up kubeconfig
