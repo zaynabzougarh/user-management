@@ -48,6 +48,8 @@ jobs:
         # Build and SonarQube analysis
       - name: Build and analyze
         run: |
+          dir 
+          dir ./
           mvn -B verify sonar:sonar -Dsonar.project.settings=./sonar-project.properties
         shell: cmd
         # Build Docker image
