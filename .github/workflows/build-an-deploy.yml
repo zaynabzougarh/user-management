@@ -47,10 +47,4 @@ jobs:
 
       
 
-      # Final verification
-      - name: Verify deployment
-        run: |
-          kubectl config current-context
-          kubectl get nodes
-          kubectl get namespaces
-          kubectl get pods
+      
