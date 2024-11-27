@@ -43,13 +43,7 @@ jobs:
         run: |
           docker build -t carikk/quality-gate:latest .
 
-      # Push Docker image to DockerHub or other container registry
-      - name: Log in to DockerHub
-        run: |
-          docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
-      - name: Push Docker image
-        run: |
-          docker push carikk/quality-gate:latest
+      
 
       # Set up kubeconfig from secret
       - name: Set up kubeconfig
